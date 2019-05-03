@@ -143,7 +143,16 @@ namespace SMART_MIRROR.API.Controllers
         public async Task<IActionResult> GetUserByRoomNumber([FromBody] UserViewModel model)
         {
             var user = await _context.Users.Where(x => x.MirrorId == model.MirrorId).FirstOrDefaultAsync();
-            return Ok(user);
+            if(user != null)
+            {
+                return Ok(user);
+            }
+            else
+            {
+                return Ok(new { status = false });
+            }
+
+            
         }
 
         [HttpPost("ValidateCurrency")]

@@ -12763,11 +12763,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Proyectos\\TP2\\SMART_MIRROR\\SMART_MIRROR.API\\SMART_MIRROR.API.csproj",
+      "projectUniqueName": "D:\\Proyectos\\TP2-API-SMARTMIRROR\\SMART_MIRROR.API\\SMART_MIRROR.API.csproj",
       "projectName": "SMART_MIRROR.API",
-      "projectPath": "D:\\Proyectos\\TP2\\SMART_MIRROR\\SMART_MIRROR.API\\SMART_MIRROR.API.csproj",
+      "projectPath": "D:\\Proyectos\\TP2-API-SMARTMIRROR\\SMART_MIRROR.API\\SMART_MIRROR.API.csproj",
       "packagesPath": "C:\\Users\\EDU\\.nuget\\packages\\",
-      "outputPath": "D:\\Proyectos\\TP2\\SMART_MIRROR\\SMART_MIRROR.API\\obj\\",
+      "outputPath": "D:\\Proyectos\\TP2-API-SMARTMIRROR\\SMART_MIRROR.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12786,8 +12786,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "D:\\Proyectos\\TP2\\SMART_MIRROR\\SMART_MIRROR.ENTITIES\\SMART_MIRROR.ENTITIES.csproj": {
-              "projectPath": "D:\\Proyectos\\TP2\\SMART_MIRROR\\SMART_MIRROR.ENTITIES\\SMART_MIRROR.ENTITIES.csproj"
+            "D:\\Proyectos\\TP2-API-SMARTMIRROR\\SMART_MIRROR.ENTITIES\\SMART_MIRROR.ENTITIES.csproj": {
+              "projectPath": "D:\\Proyectos\\TP2-API-SMARTMIRROR\\SMART_MIRROR.ENTITIES\\SMART_MIRROR.ENTITIES.csproj"
             }
           }
         }

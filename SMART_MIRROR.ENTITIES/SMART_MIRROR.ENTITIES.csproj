@@ -212,8 +212,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\BooleanTable.cs" />
+    <Compile Include="Models\DiaryGoogle.cs" />
+    <Compile Include="Models\DiaryInformation.cs" />
+    <Compile Include="Models\EmailInformation.cs" />
     <Compile Include="Models\Gadget.cs" />
+    <Compile Include="Models\HotelService.cs" />
+    <Compile Include="Models\HotelServiceInformation.cs" />
+    <Compile Include="Models\MusicAction.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserGadget.cs" />
     <Compile Include="Models\UserGadgets.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

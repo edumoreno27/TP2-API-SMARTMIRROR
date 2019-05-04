@@ -51,7 +51,7 @@ namespace SMART_MIRROR.API.Controllers
                 userExist.Token_type = response.Data.token_type;
                 userExist.Expires_in = response.Data.expires_in;
                 userExist.MirrorId = model.MirrorId;
-                
+                userExist.RoomNumber = model.RoomNumber;
                 await _context.SaveChangesAsync();
                 return Ok(userExist);
             }
@@ -82,7 +82,8 @@ namespace SMART_MIRROR.API.Controllers
                         Expires_in = response.Data.expires_in,
                         Accesstoken = response.Data.access_token,
                         IdReference = model.IdReference,
-                        MirrorId = model.MirrorId
+                        MirrorId = model.MirrorId,
+                        RoomNumber=model.RoomNumber
                     };
                     
 
@@ -120,7 +121,9 @@ namespace SMART_MIRROR.API.Controllers
                     var musicAction = new MusicAction()
                     {
                         UserId = user.Id,
-                        Action = ""
+                        Action = "",
+                        MirrorId = model.MirrorId,
+                        MusicBool = false
                     };
                     await _context.MusicActions.AddAsync(musicAction);
 
@@ -171,7 +174,7 @@ namespace SMART_MIRROR.API.Controllers
         [HttpPost("AfterLogout")]
         public async Task<IActionResult> LogoutActions([FromBody] UserViewModel model)
         {
-            var user = await _context.Users.Where(x => x.MirrorId == model.MirrorId).FirstOrDefaultAsync();
+            var user = await _context.Users.Where(x => x.IdReference == model.RoomNumber).FirstOrDefaultAsync();
             var usergadgets = await _context.UserGadgets.Where(x => x.UserId == user.Id).ToListAsync();
             foreach (var item in usergadgets)
             {

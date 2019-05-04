@@ -220,6 +220,7 @@
     <Compile Include="Models\HotelService.cs" />
     <Compile Include="Models\HotelServiceInformation.cs" />
     <Compile Include="Models\MusicAction.cs" />
+    <Compile Include="Models\MusicNoUser.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserGadget.cs" />
     <Compile Include="Models\UserGadgets.cs" />

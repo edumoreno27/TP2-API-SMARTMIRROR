@@ -25,5 +25,7 @@ namespace SMART_MIRROR.API.Data
         public DbSet<HotelService> HotelServices { get; set; }
         public DbSet<HotelServiceInformation> HotelServiceInformations { get; set; }
         public DbSet<MusicAction> MusicActions { get; set; }
+
+        public DbSet<MusicNoUser> MusicNoUserActions { get; set; }
     }
 }

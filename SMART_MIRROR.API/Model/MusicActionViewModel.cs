@@ -9,5 +9,6 @@ namespace SMART_MIRROR.API.Model
     {
         public string UserId { get; set; }
         public string Action { get; set; }
+        public int MirrorId { get; set; }
     }
 }

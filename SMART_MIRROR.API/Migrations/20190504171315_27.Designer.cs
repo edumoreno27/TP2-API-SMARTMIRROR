@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SMART_MIRROR.API.Data;
 
 namespace SMART_MIRROR.API.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    partial class ApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190504171315_27")]
+    partial class _27
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -295,22 +297,6 @@ namespace SMART_MIRROR.API.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("MusicActions");
-                });
-
-            modelBuilder.Entity("SMART_MIRROR.ENTITIES.Models.MusicNoUser", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Action");
-
-                    b.Property<int>("MirrorId");
-
-                    b.Property<bool>("MusicBool");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MusicNoUserActions");
                 });
 
             modelBuilder.Entity("SMART_MIRROR.ENTITIES.Models.User", b =>

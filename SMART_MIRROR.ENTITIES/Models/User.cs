@@ -17,5 +17,7 @@ namespace SMART_MIRROR.ENTITIES.Models
         public int MirrorId { get; set; }
         public int IdReference { get; set; }
 
+        public int RoomNumber { get; set; }
+
     }
 }

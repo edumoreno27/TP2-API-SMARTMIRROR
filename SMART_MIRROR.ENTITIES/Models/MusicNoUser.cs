@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 
 namespace SMART_MIRROR.ENTITIES.Models
 {
-    public class MusicAction
+    public class MusicNoUser
     {
         public Guid Id { get; set; }
         public string Action { get; set; }
 
-        public int MirrorId { get; set; }
-        public string UserId { get; set; }
+        public int MirrorId { get; set; }        
 
         public bool MusicBool { get; set; }
-        public User User { get; set; }
-
+        
     }
 }

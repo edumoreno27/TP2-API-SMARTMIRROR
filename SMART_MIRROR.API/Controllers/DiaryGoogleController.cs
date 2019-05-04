@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Transactions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +23,9 @@ namespace SMART_MIRROR.API.Controllers
         [HttpPost("GetDiaries")]
         public async Task<IActionResult> GetDiaries([FromBody] DiaryViewModel model)
         {
-            var booleanTable = await _context.BooleanTables.Where(x => x.UserId == model.UserId).FirstOrDefaultAsync();
+            
+
+                var booleanTable = await _context.BooleanTables.Where(x => x.UserId == model.UserId).FirstOrDefaultAsync();
             if (booleanTable.Diary)
             {
                 var Diaries = await _context.DiaryGoogles.Where(x => x.UserId == model.UserId).ToListAsync();
@@ -41,6 +44,7 @@ namespace SMART_MIRROR.API.Controllers
                 {
                     booleanTable.Diary = false;
                     await _context.SaveChangesAsync();
+                        
                     return Ok(new
                     {
                         Order = Diaries[counterInt].Index,
@@ -52,7 +56,8 @@ namespace SMART_MIRROR.API.Controllers
                 {
                     booleanTable.Diary = false;
                     await _context.SaveChangesAsync();
-                    return Ok(new
+                        
+                        return Ok(new
                     {
                         Respuesta = 2
                         //SI NO HAY NADAA NO MOSTRAR INFO
@@ -63,67 +68,73 @@ namespace SMART_MIRROR.API.Controllers
             }
             else
             {
+                
                 return Ok(new
                 {
                     Respuesta = 3
                     //VALIDAR LA RECURRENCIA
                 });
             }
+            
 
         }
         [HttpPost("SaveDiaries")]
         public async Task<IActionResult> SaveDiaries([FromBody] DiaryViewModel model)
         {
-            var diaryGoogles = await _context.DiaryGoogles.Where(x => x.UserId == model.UserId).ToListAsync();
 
-            if (await _context.DiaryGoogles.AnyAsync(x=>x.UserId == model.UserId))
-            {
-                if (diaryGoogles != null)
+           
+                var diaryGoogles = await _context.DiaryGoogles.Where(x => x.UserId == model.UserId).ToListAsync();
+
+                if (await _context.DiaryGoogles.AnyAsync(x => x.UserId == model.UserId))
                 {
-                    if (diaryGoogles.Count > 0)
+                    if (diaryGoogles != null)
                     {
-                        foreach (var item in diaryGoogles)
+                        if (diaryGoogles.Count > 0)
                         {
-                            _context.DiaryGoogles.Remove(item);
+                            foreach (var item in diaryGoogles)
+                            {
+                                _context.DiaryGoogles.Remove(item);
+                            }
+                            await _context.SaveChangesAsync();
                         }
-                        await _context.SaveChangesAsync();
                     }
-                }
-                for (int i = 0; i < model.List.Count; i++)
-                {
-                    var diary = new DiaryGoogle()
+                    for (int i = 0; i < model.List.Count; i++)
                     {
-                        Index = model.List[i],
-                        IsSelected = false,
-                        Map = false,
-                        UserId = model.UserId,
+                        var diary = new DiaryGoogle()
+                        {
+                            Index = model.List[i],
+                            IsSelected = false,
+                            Map = false,
+                            UserId = model.UserId,
 
-                    };
-                    await _context.DiaryGoogles.AddAsync(diary);
-                }                
-  
-                await _context.SaveChangesAsync();
-                return Ok();                
-            }
-            else
-            {
-                for (int i = 0; i < model.List.Count; i++)
-                {
-                    var diary = new DiaryGoogle()
-                    {
-                        Index = model.List[i],
-                        IsSelected = false,
-                        Map = false,
-                        UserId = model.UserId,
+                        };
+                        await _context.DiaryGoogles.AddAsync(diary);
+                    }
 
-                    };
-                    await _context.DiaryGoogles.AddAsync(diary);
+                    await _context.SaveChangesAsync();
+                    
+                    return Ok();
                 }
+                else
+                {
+                    for (int i = 0; i < model.List.Count; i++)
+                    {
+                        var diary = new DiaryGoogle()
+                        {
+                            Index = model.List[i],
+                            IsSelected = false,
+                            Map = false,
+                            UserId = model.UserId,
 
-                await _context.SaveChangesAsync();
-                return Ok();
-            }
+                        };
+                        await _context.DiaryGoogles.AddAsync(diary);
+                    }
+
+                    await _context.SaveChangesAsync();
+                    return Ok();
+                }
             
+
         }
         [HttpPost("UpdateDiaries")]
         public async Task<IActionResult> UpdateDiaries([FromBody] DiaryViewModel model)

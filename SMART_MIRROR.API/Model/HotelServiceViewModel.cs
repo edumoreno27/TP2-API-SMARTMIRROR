@@ -10,10 +10,13 @@ namespace SMART_MIRROR.API.Model
         public List<DataHotelServices> ListHotelServices { get; set; }
         public string UserId { get; set; }
         public int Order { get; set; }
+        public int MirrorId { get; set; }
     }
 
     public class DataHotelServices {               
         public int Index { get; set; }
-        public int ServiceId { get; set; }        
+        public int ServiceId { get; set; }       
+        
+        public int MirrorId { get; set; }
     }
 }

@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SMART_MIRROR.ENTITIES.Models
+{
+    public class HotelServiceNoUser
+    {
+        public Guid Id { get; set; }
+        public int Index { get; set; }
+        public int ServiceId { get; set; }
+
+        public int MirrorId { get; set; }
+
+        public bool IsTrue { get; set; }
+        public bool IsSelected { get; set; }
+    }
+}

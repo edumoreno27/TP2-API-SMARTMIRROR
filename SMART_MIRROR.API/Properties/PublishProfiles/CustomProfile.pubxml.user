@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgyRRrHIye0awYuw42u0tMQAAAAACAAAAAAAQZgAAAAEAACAAAAA1VucPkMI6g0G1jU0JVgAp2fDjSV1eommX6vBmKYHufgAAAAAOgAAAAAIAACAAAACQepQHuf3RnbG6sQ/oNa3Cs38RMSJpzJ7rSQzy7UKVaiAAAADJinV7wLz6QoraNZv+JtpnHqVjStYin+9AjF3DMgRtmkAAAACEwjp59xzJYlYLX2hwW45P0frt8epa60F+tKQVj6mUuAee7PqVMPLwTI1+/swpFSxTjApYrRLnT/Dky92542d4</EncryptedPassword>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAd9hzn8WHq0+AbM8FLrEETgAAAAACAAAAAAAQZgAAAAEAACAAAAAp76+jDJaIo4aFy/tg1mbW+fhIjCo2Q4aMbc/tyPTp+QAAAAAOgAAAAAIAACAAAAD1RDBX+09XFU3rGfyGhdMrfBHxYhj7S51TFuhrpI5boyAAAABE0hkmC2rQckCwIXcVWGrOTWtlvuoMBfXATT8G9iklE0AAAADqpKyvrXoP+sqUS+M63/xxBt0FZEqkp/i/jUKTGblwrCRGO7s9sy4nDo/gFVQ9NMnhGYLV3cO/mdZSyk8YWfJB</EncryptedPassword>
   </PropertyGroup>
   <ItemGroup>
     <DestinationConnectionStrings Include="DefaultConnection">

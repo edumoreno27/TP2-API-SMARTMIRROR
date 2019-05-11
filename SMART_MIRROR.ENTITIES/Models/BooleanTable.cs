@@ -13,7 +13,10 @@ namespace SMART_MIRROR.ENTITIES.Models
         public bool Order { get; set; }
         public bool Diary { get; set; }
         public bool Email { get; set; }
+
+        public bool News { get; set; }
         public bool StartEmail{ get; set; }
+        public bool StartNews { get; set; }
         public string UserId { get; set; }
         public bool Sesion { get; set; }
         public bool HotelService { get; set; }

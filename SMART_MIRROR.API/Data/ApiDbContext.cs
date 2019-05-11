@@ -14,7 +14,7 @@ namespace SMART_MIRROR.API.Data
         public ApiDbContext(DbContextOptions<ApiDbContext> options)
             : base(options)
         {
-        }             
+        }
 
         public DbSet<Gadget> Gadgets { get; set; }
         public DbSet<UserGadgets> UserGadgets { get; set; }
@@ -28,5 +28,8 @@ namespace SMART_MIRROR.API.Data
 
         public DbSet<MusicNoUser> MusicNoUserActions { get; set; }
         public DbSet<HotelServiceNoUser> HotelServiceNoUsersActions { get; set; }
+
+        public DbSet<NewsInformation> NewsInformationAction { get; set; }
+        public DbSet<NewsInformationNoUser> NewsInformationNoUserAction { get; set; }
     }
 }

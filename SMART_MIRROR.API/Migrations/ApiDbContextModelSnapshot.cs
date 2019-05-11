@@ -142,11 +142,15 @@ namespace SMART_MIRROR.API.Migrations
 
                     b.Property<bool>("Music");
 
+                    b.Property<bool>("News");
+
                     b.Property<bool>("Order");
 
                     b.Property<bool>("Sesion");
 
                     b.Property<bool>("StartEmail");
+
+                    b.Property<bool>("StartNews");
 
                     b.Property<bool>("Status");
 
@@ -333,6 +337,44 @@ namespace SMART_MIRROR.API.Migrations
                     b.ToTable("MusicNoUserActions");
                 });
 
+            modelBuilder.Entity("SMART_MIRROR.ENTITIES.Models.NewsInformation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Tittle");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("NewsInformationAction");
+                });
+
+            modelBuilder.Entity("SMART_MIRROR.ENTITIES.Models.NewsInformationNoUser", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("MirrorId");
+
+                    b.Property<bool>("News");
+
+                    b.Property<bool>("StartNews");
+
+                    b.Property<string>("Tittle");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("NewsInformationNoUserAction");
+                });
+
             modelBuilder.Entity("SMART_MIRROR.ENTITIES.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -508,6 +550,13 @@ namespace SMART_MIRROR.API.Migrations
                 });
 
             modelBuilder.Entity("SMART_MIRROR.ENTITIES.Models.MusicAction", b =>
+                {
+                    b.HasOne("SMART_MIRROR.ENTITIES.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("SMART_MIRROR.ENTITIES.Models.NewsInformation", b =>
                 {
                     b.HasOne("SMART_MIRROR.ENTITIES.Models.User", "User")
                         .WithMany()

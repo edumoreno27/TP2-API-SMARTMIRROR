@@ -94,7 +94,7 @@ namespace SMART_MIRROR.API.Controllers
                         
                         return Ok(new
                         {
-                            status = 1
+                            status = 1 
                         });
                     }
                     else
@@ -131,12 +131,12 @@ namespace SMART_MIRROR.API.Controllers
                 var arreglo = model.Description.Split(' ');
                 var contador = arreglo.Count();
                 var minutes = (Convert.ToDecimal(contador) / Convert.ToDecimal(wordsPerMinute)) * 60000;
-                Thread.Sleep(Convert.ToInt32(minutes) - 1000);
-            
-            
-                var booleanTable = await _context.BooleanTables.Where(x => x.UserId == model.UserId).FirstOrDefaultAsync();
-                booleanTable.StartEmail = true;
-                await _context.SaveChangesAsync();
+            Thread.Sleep(Convert.ToInt32(minutes) - 1000);
+        
+                    var booleanTable = await _context.BooleanTables.Where(x => x.UserId == model.UserId).FirstOrDefaultAsync();
+                    booleanTable.StartEmail = true;
+                    await _context.SaveChangesAsync();
+          
                 
             
             return Ok();

@@ -222,6 +222,8 @@
     <Compile Include="Models\HotelServiceNoUser.cs" />
     <Compile Include="Models\MusicAction.cs" />
     <Compile Include="Models\MusicNoUser.cs" />
+    <Compile Include="Models\NewsInformation.cs" />
+    <Compile Include="Models\NewsInformationNoUser.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserGadget.cs" />
     <Compile Include="Models\UserGadgets.cs" />

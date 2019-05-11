@@ -99,6 +99,8 @@ namespace SMART_MIRROR.API.Controllers
                         Sesion = true,
                         Music = false,
                         HotelService = false,
+                        StartNews = false,
+                        StartEmail = false,
                         UserId = user.Id
                     };
                     await _context.BooleanTables.AddAsync(booleanTable);
@@ -174,57 +176,80 @@ namespace SMART_MIRROR.API.Controllers
         [HttpPost("AfterLogout")]
         public async Task<IActionResult> LogoutActions([FromBody] UserViewModel model)
         {
-            var user = await _context.Users.Where(x => x.IdReference == model.RoomNumber).FirstOrDefaultAsync();
-            var usergadgets = await _context.UserGadgets.Where(x => x.UserId == user.Id).ToListAsync();
-            foreach (var item in usergadgets)
+            try
             {
-                _context.UserGadgets.Remove(item);
-            }
-            
+                var user = await _context.Users.Where(x => x.IdReference == model.RoomNumber).FirstOrDefaultAsync();
+                var usergadgets = await _context.UserGadgets.Where(x => x.UserId == user.Id).ToListAsync();
+                foreach (var item in usergadgets)
+                {
+                    _context.UserGadgets.Remove(item);
+                }
 
-            var booleanTable = await _context.BooleanTables.Where(x => x.UserId == user.Id).FirstOrDefaultAsync();
-            _context.BooleanTables.Remove(booleanTable);
-            var emailinformations = await _context.EmailInformations.Where(x => x.UserId == user.Id).ToListAsync();
-            foreach (var item in emailinformations)
-            {
-                _context.EmailInformations.Remove(item);
-            }
-            var diaryinformations = await _context.DiaryInformations.Where(x => x.UserId == user.Id).ToListAsync();
-            foreach (var item in diaryinformations)
-            {
-                _context.DiaryInformations.Remove(item);
-            }
 
-            var diarygoogles = await _context.DiaryGoogles.Where(x => x.UserId == user.Id).ToListAsync();
-            foreach (var item in diarygoogles)
-            {
-                _context.DiaryGoogles.Remove(item);
-            }
-            var musicAction = await _context.MusicActions.Where(x => x.UserId == user.Id).FirstOrDefaultAsync();
-            _context.MusicActions.Remove(musicAction);
+                var booleanTable = await _context.BooleanTables.Where(x => x.UserId == user.Id).FirstOrDefaultAsync();
+                if (booleanTable != null)
+                {
+                    _context.BooleanTables.Remove(booleanTable);
+                }
+                
 
-            //booleanTable.Sesion = true;
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-            return Ok();
+                var emailinformations = await _context.EmailInformations.Where(x => x.UserId == user.Id).ToListAsync();
+                foreach (var item in emailinformations)
+                {
+                    _context.EmailInformations.Remove(item);
+                }
+                var diaryinformations = await _context.DiaryInformations.Where(x => x.UserId == user.Id).ToListAsync();
+                foreach (var item in diaryinformations)
+                {
+                    _context.DiaryInformations.Remove(item);
+                }
+
+                var diarygoogles = await _context.DiaryGoogles.Where(x => x.UserId == user.Id).ToListAsync();
+                foreach (var item in diarygoogles)
+                {
+                    _context.DiaryGoogles.Remove(item);
+                }
+
+                var musicAction = await _context.MusicActions.Where(x => x.UserId == user.Id).FirstOrDefaultAsync();
+                if (musicAction != null)
+                {
+                    _context.MusicActions.Remove(musicAction);
+                }
+
+                var newInformation = await _context.NewsInformationAction.Where(x => x.UserId == user.Id).FirstOrDefaultAsync();
+                if (newInformation != null)
+                {
+                    _context.NewsInformationAction.Remove(newInformation);
+                }
+
+                var hotelserviceAction = await _context.HotelServiceInformations.Where(x => x.UserId == user.Id).FirstOrDefaultAsync();
+                
+                if (hotelserviceAction != null)
+                {
+                    _context.HotelServiceInformations.Remove(hotelserviceAction);
+                }
+                var hotelService = await _context.HotelServices.Where(x => x.UserId == user.Id).ToListAsync();
+                foreach (var item in hotelService)
+                {
+                    _context.HotelServices.Remove(item);
+                }
+                //booleanTable.Sesion = true;
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+                return Ok(new { status = true }
+                    );
+
+            }
+            catch (Exception e)
+            {
+                return Ok(new
+                {
+                    status = false,
+                    error = e
+                }
+                    );
+            }
         }
-        //[HttpPost("GetStatus")]
-        //public async Task<IActionResult> GetStatus([FromBody] UserViewModel model)
-        //{
-        //    var user = await _context.Users.Where(z => z.Id == model.Id).FirstOrDefaultAsync();
-            
-        //    var booleanTable = await _context.BooleanTables.Where(x => x.UserId == user.Id).FirstOrDefaultAsync();
-        //    if (booleanTable.Sesion)
-        //    {
-        //        booleanTable.Sesion = false;
-        //        await _context.SaveChangesAsync();
-        //        return Ok( new { status = false , isActive = user.IsActive });
-        //    }
-        //    else
-        //    {
-        //        return Ok(new { status = true });
-        //    }
-            
-        //}
+    
     }
 }

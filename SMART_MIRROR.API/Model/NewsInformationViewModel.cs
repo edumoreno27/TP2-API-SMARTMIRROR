@@ -12,6 +12,6 @@ namespace SMART_MIRROR.API.Model
         public string UserId { get; set; }
 
         public int MirrorId { get; set; }
-        
+        public int Index { get; set; }
     }
 }

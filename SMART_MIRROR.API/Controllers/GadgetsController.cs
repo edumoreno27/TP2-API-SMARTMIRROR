@@ -224,7 +224,8 @@ namespace SMART_MIRROR.API.Controllers
         [HttpPost("UpdateBooleans")]
         public async Task<IActionResult> UpdateBooleans([FromBody] UserViewModel model) {
             var booleanTable = await _context.BooleanTables.Where(x => x.UserId == model.Id).FirstOrDefaultAsync();
-            booleanTable.Status = true;            
+            booleanTable.Status = true;
+            booleanTable.Order = true;
             await _context.SaveChangesAsync();
             return Ok();
         }

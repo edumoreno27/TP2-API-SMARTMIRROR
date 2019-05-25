@@ -14,6 +14,8 @@ namespace SMART_MIRROR.ENTITIES.Models
         public string Message { get; set; }
         public string SenderAt { get; set; }
         public string UserId { get; set; }        
+
+        public int Index { get; set; }
         public User User { get; set; }
     }
 }

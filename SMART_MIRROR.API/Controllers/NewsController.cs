@@ -32,7 +32,7 @@ namespace SMART_MIRROR.API.Controllers
                 newsUserDetected.Tittle = model.Tittle;
                 newsUserDetected.UserId = model.UserId;
                 newsUserDetected.Description = model.Description;
-
+                newsUserDetected.Index = model.Index;      
                 await _context.SaveChangesAsync();
 
                 return Ok();
@@ -43,7 +43,8 @@ namespace SMART_MIRROR.API.Controllers
                 {
                     Tittle = model.Tittle,
                     Description = model.Description,
-                    UserId = model.UserId
+                    UserId = model.UserId,
+                    Index = model.Index
                 };
                 await _context.NewsInformationAction.AddAsync(newinformation);
 
@@ -70,6 +71,7 @@ namespace SMART_MIRROR.API.Controllers
                 newsUserDetected.Tittle = model.Tittle;                
                 newsUserDetected.Description = model.Description;
                 newsUserDetected.MirrorId = model.MirrorId;
+                newsUserDetected.Index = model.Index;
                 await _context.SaveChangesAsync();
 
                 return Ok();
@@ -80,7 +82,8 @@ namespace SMART_MIRROR.API.Controllers
                 {
                     Tittle = model.Tittle,
                     Description = model.Description,
-                    MirrorId = model.MirrorId
+                    MirrorId = model.MirrorId,
+                    Index = model.Index
                    
                 };
                 await _context.NewsInformationNoUserAction.AddAsync(newinformation);
@@ -102,6 +105,8 @@ namespace SMART_MIRROR.API.Controllers
         {
 
             var booleanTable = await _context.BooleanTables.Where(x => x.UserId == model.UserId).FirstOrDefaultAsync();
+            var newsInformation = await _context.EmailInformations.Where(x => x.UserId == model.UserId).FirstOrDefaultAsync();
+
             if (!booleanTable.StartNews)
             {
                 if (booleanTable.News)
@@ -111,7 +116,8 @@ namespace SMART_MIRROR.API.Controllers
 
                     return Ok(new
                     {
-                        status = 1
+                        status = 1,
+                        index=newsInformation.Index
                     });
                 }
                 else
@@ -141,6 +147,7 @@ namespace SMART_MIRROR.API.Controllers
         {
 
             var booleanTable = await _context.NewsInformationNoUserAction.Where(x => x.MirrorId == model.MirrorId).FirstOrDefaultAsync();
+            
             if (!booleanTable.StartNews)
             {
                 if (booleanTable.News)
@@ -150,7 +157,8 @@ namespace SMART_MIRROR.API.Controllers
 
                     return Ok(new
                     {
-                        status = 1
+                        status = 1,
+                        index=booleanTable.Index
                     });
                 }
                 else

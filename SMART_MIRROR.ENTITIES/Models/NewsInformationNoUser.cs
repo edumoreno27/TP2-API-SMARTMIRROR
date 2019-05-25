@@ -14,6 +14,8 @@ namespace SMART_MIRROR.ENTITIES.Models
         public int MirrorId { get; set; }
         public string Description { get; set; }        
         public bool StartNews { get; set; }
+
+        public int Index { get; set; }
         public bool News { get; set; }
     }
 }

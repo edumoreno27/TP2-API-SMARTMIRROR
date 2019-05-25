@@ -35,19 +35,21 @@ namespace SMART_MIRROR.API.Controllers
                     emailUserDetected.SenderAt = model.ObjectReference.SenderAt;
                     emailUserDetected.Subject = model.ObjectReference.Subject;
                     emailUserDetected.UserId = model.UserId;
+                    emailUserDetected.Index = model.ObjectReference.Index;    
                     await _context.SaveChangesAsync();
                     
                     return Ok();
                 }
                 else
                 {
-                    var emailInformation = new EmailInformation()
-                    {
+                var emailInformation = new EmailInformation()
+                {
                         Message = model.ObjectReference.Message,
                         Sender = model.ObjectReference.Sender,
                         SenderAt = model.ObjectReference.SenderAt,
                         Subject = model.ObjectReference.Subject,
-                        UserId = model.UserId
+                        UserId = model.UserId,
+                        Index = model.ObjectReference.Index
                     };
                     await _context.EmailInformations.AddAsync(emailInformation);
 
@@ -85,6 +87,7 @@ namespace SMART_MIRROR.API.Controllers
         {
            
                 var booleanTable = await _context.BooleanTables.Where(x => x.UserId == model.UserId).FirstOrDefaultAsync();
+            var EmailInformation = await _context.EmailInformations.Where(x => x.UserId == model.UserId).FirstOrDefaultAsync();
                 if (!booleanTable.StartEmail)
                 {
                     if (booleanTable.Email)
@@ -94,7 +97,8 @@ namespace SMART_MIRROR.API.Controllers
                         
                         return Ok(new
                         {
-                            status = 1 
+                            status = 1,
+                            index =EmailInformation.Index
                         });
                     }
                     else

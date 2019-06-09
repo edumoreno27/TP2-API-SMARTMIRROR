@@ -230,6 +230,17 @@ namespace SMART_MIRROR.API.Controllers
             return Ok();
         }
 
+        [HttpPost("GetStateWidget")]
+        public async Task<IActionResult> GetGadgetStatus([FromBody] WidgetViewModel model)
+        {
+            var stateGadget = await _context.UserGadgets.Where(x => x.GadgetId == model.GadgetID).Where(x => x.UserId == model.UserID).FirstOrDefaultAsync();
+
+
+            return Ok(new
+            {
+                status=stateGadget.IsActive
+            });
+        }
     }
 
 }

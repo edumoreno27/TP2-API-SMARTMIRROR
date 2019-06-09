@@ -105,7 +105,7 @@ namespace SMART_MIRROR.API.Controllers
         {
 
             var booleanTable = await _context.BooleanTables.Where(x => x.UserId == model.UserId).FirstOrDefaultAsync();
-            var newsInformation = await _context.EmailInformations.Where(x => x.UserId == model.UserId).FirstOrDefaultAsync();
+            var newsInformation = await _context.NewsInformationAction.Where(x => x.UserId == model.UserId).FirstOrDefaultAsync();
 
             if (!booleanTable.StartNews)
             {

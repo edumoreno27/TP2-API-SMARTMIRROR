@@ -1,3 +1,4 @@
 packages/*
 /.vs/SMART_MIRROR/v15
 /.vs/SMART_MIRROR/v16
+/SMART_MIRROR.API/bin/Release/netcoreapp2.1/publish

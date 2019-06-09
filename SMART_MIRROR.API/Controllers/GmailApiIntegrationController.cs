@@ -12,6 +12,7 @@ using Google.Apis.Gmail.v1.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SMART_MIRROR.API.Data;
@@ -22,6 +23,7 @@ using SMART_MIRROR.API.Util;
 namespace SMART_MIRROR.API.Controllers
 {
     [AllowAnonymous]
+    [EnableCors("MyPolicy")]
     public class GmailApiIntegrationController : Controller
     {
 

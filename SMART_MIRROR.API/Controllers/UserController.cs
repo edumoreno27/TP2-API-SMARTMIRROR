@@ -12,10 +12,12 @@ using SMART_MIRROR.API.Data;
 using SMART_MIRROR.API.Model;
 using SMART_MIRROR.ENTITIES.Models;
 using SMART_MIRROR.API.Util;
+using Microsoft.AspNetCore.Cors;
 
 namespace SMART_MIRROR.API.Controllers
 {
     [AllowAnonymous]
+    [EnableCors("MyPolicy")]
     public class UserController : Controller
     {
         public readonly ApiDbContext _context;

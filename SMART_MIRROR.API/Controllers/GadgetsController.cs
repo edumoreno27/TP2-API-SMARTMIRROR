@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ using SMART_MIRROR.API.Model;
 namespace SMART_MIRROR.API.Controllers
 {
     [AllowAnonymous]
+    [EnableCors("MyPolicy")]
     public class GadgetsController : Controller
     {
         public readonly ApiDbContext _context;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using SMART_MIRROR.ENTITIES.Models;
 
 namespace SMART_MIRROR.API.Controllers
 {
+    [EnableCors("MyPolicy")]
     public class HotelServiceController : Controller
     {
         public readonly ApiDbContext _context;

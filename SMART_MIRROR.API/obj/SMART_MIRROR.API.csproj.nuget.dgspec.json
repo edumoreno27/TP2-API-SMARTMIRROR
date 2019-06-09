@@ -91,7 +91,12 @@
       "restore": {
         "projectUniqueName": "D:\\Proyectos\\TP2-API-SMARTMIRROR\\SMART_MIRROR.ENTITIES\\SMART_MIRROR.ENTITIES.csproj",
         "projectName": "SMART_MIRROR.ENTITIES",
-        "projectPath": "D:\\Proyectos\\TP2-API-SMARTMIRROR\\SMART_MIRROR.ENTITIES\\SMART_MIRROR.ENTITIES.csproj"
+        "projectPath": "D:\\Proyectos\\TP2-API-SMARTMIRROR\\SMART_MIRROR.ENTITIES\\SMART_MIRROR.ENTITIES.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
       },
       "frameworks": {
         "net472": {}
